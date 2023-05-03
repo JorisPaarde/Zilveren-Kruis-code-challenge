@@ -9,9 +9,19 @@
                 <input
                     id="persoonlijke-gegevens-naam"
                     class="input__field form-control"
+                    :class="{ 'is-invalid': v$.naam.$error }"
                     type="text"
-                    v-model="naam"
+                    v-model="v$.naam.$model"
                 />
+            </div>
+            <div
+                class="input__feedback invalid-feedback mt-1"
+                v-show="v$.naam.$error"
+                aria-live="polite"
+            >
+                <span
+                    >Dit veld is verplicht.</span
+                >
             </div>
         </div>
         <div class="form-input my-4">
@@ -26,7 +36,7 @@
                     id="persoonlijke-gegevens-tussenvoegsel"
                     class="input__field form-control"
                     type="text"
-                    v-model="tussenvoegsel"
+                    v-model="v$.tussenvoegsel.$model"
                 />
             </div>
         </div>
@@ -40,9 +50,19 @@
                 <input
                     id="persoonlijke-gegevens-achternaam"
                     class="input__field form-control"
+                    :class="{ 'is-invalid': v$.achternaam.$error }"
                     type="text"
-                    v-model="achternaam"
+                    v-model="v$.achternaam.$model"
                 />
+            </div>
+            <div
+                class="input__feedback invalid-feedback mt-1"
+                v-show="v$.achternaam.$error"
+                aria-live="polite"
+            >
+                <span
+                    >Dit veld is verplicht.</span
+                >
             </div>
         </div>
         <div class="form-input my-4">
@@ -53,10 +73,11 @@
                         <input
                             id="geslacht-man"
                             class="radio__input custom-control-input"
+                            :class="{ 'is-invalid': v$.geslacht.$error }"
                             type="radio"
                             name="geslacht"
                             value="man"
-                            v-model="selectedGeslacht"
+                            v-model="v$.geslacht.$model"
                         />
                         <label
                             class="radio__label custom-control-label"
@@ -69,10 +90,11 @@
                         <input
                             id="geslacht-vrouw"
                             class="radio__input custom-control-input"
+                            :class="{ 'is-invalid': v$.geslacht.$error }"
                             type="radio"
                             value="vrouw"
                             name="geslacht"
-                            v-model="selectedGeslacht"
+                            v-model="v$.geslacht.$model"
                         />
                         <label
                             class="radio__label custom-control-label"
@@ -92,9 +114,10 @@
                 <input
                     id="geboortedatum"
                     class="input__field form-control"
+                    :class="{ 'is-invalid': v$.geboortedatum.$error }"
                     type="date"
                     :max="currentDate"
-                    v-model="geboortedatum"
+                    v-model="v$.geboortedatum.$model"
                 />
             </div>
         </div>
@@ -105,15 +128,16 @@
                 </label>
                 <input
                     id="burgerservicenummer"
-                    class="input__field form-control is-invalid"
+                    class="input__field form-control"
+                    :class="{ 'is-invalid': v$.burgerservicenummer.$error }"
                     type="number"
-                    maxlength="9"
-                    oninput="this.value=this.value.slice(0,this.maxLength)"
-                    v-model="burgerservicenummer"
+                    oninput="this.value=this.value.slice(0,9)"
+                    v-model="v$.burgerservicenummer.$model"
                 />
             </div>
             <div
                 class="input__feedback invalid-feedback mt-1"
+                v-show="v$.burgerservicenummer.$error"
                 aria-live="polite"
             >
                 <span
@@ -129,9 +153,23 @@
 import { computed } from 'vue';
 import { useFormStore } from '../../../stores/formStore';
 import { getCurrentDate } from '@/helpers/datehelpers';
+// Import Vuelidate and the required validator
+import { useVuelidate } from '@vuelidate/core';
+import { required, minLength } from '@vuelidate/validators';
+
+// Define your validation rules
+const validations = {
+    naam: { required },
+    tussenvoegsel: {},
+    achternaam: { required },
+    geslacht: { required },
+    geboortedatum: { required },
+    burgerservicenummer: { required, minLengthValue: minLength(9), }
+};
 
 const formStore = useFormStore();
 const currentDate = getCurrentDate();
+const state = formStore.$state;
 
 const naam = computed({
     get: () => formStore.persoonlijkeGegevens.naam,
@@ -142,20 +180,34 @@ const tussenvoegsel = computed({
     get: () => formStore.persoonlijkeGegevens.tussenvoegsel,
     set: value => (formStore.persoonlijkeGegevens.tussenvoegsel = value)
 });
+
 const achternaam = computed({
     get: () => formStore.persoonlijkeGegevens.achternaam,
     set: value => (formStore.persoonlijkeGegevens.achternaam = value)
 });
-const selectedGeslacht = computed({
+
+const geslacht = computed({
     get: () => formStore.persoonlijkeGegevens.geslacht,
     set: value => (formStore.persoonlijkeGegevens.geslacht = value)
 });
+
 const geboortedatum = computed({
     get: () => formStore.persoonlijkeGegevens.geboortedatum,
     set: value => (formStore.persoonlijkeGegevens.geboortedatum = value)
 });
+
 const burgerservicenummer = computed({
     get: () => formStore.persoonlijkeGegevens.burgerservicenummer,
     set: value => (formStore.persoonlijkeGegevens.burgerservicenummer = value)
 });
+
+// pass the computed properties to `state`
+state.persoonlijkeGegevens.naam = naam.value;
+state.persoonlijkeGegevens.tussenvoegsel = tussenvoegsel.value;
+state.persoonlijkeGegevens.achternaam = achternaam.value;
+state.persoonlijkeGegevens.geslacht = geslacht.value;
+state.persoonlijkeGegevens.geboortedatum = geboortedatum.value;
+state.persoonlijkeGegevens.burgerservicenummer = burgerservicenummer.value;
+
+const v$ = useVuelidate(validations, state.persoonlijkeGegevens);
 </script>
