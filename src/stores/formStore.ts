@@ -12,10 +12,10 @@ export const useFormStore = defineStore({
             geboortedatum: '',
             burgerservicenummer: ''
         },
-        basisverzekering: '',
+        basisVerzekering: '',
         betaaltermijn: 'per jaar',
         eigenRisico: '€ 385 - verplicht eigen risico',
         aanvullendeVerzekering: 'Geen aanvullende verzekering geselecteerd',
-        tandverzekering: 'Geen tandartsverzekering geselecteerd'
+        tandVerzekering: 'Geen tandartsverzekering geselecteerd'
     })
 });
