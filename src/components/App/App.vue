@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import SiteHeader from './Header/SiteHeader.vue';
 import AanmeldFormulier from './Form/AanmeldFormulier.vue';
-import Review from '../Review/Review.vue';
-import ContactCard from '../Cards/ContactCard.vue'
+import Review from './Review/Review.vue';
+import ContactCard from './Cards/ContactCard.vue'
 import SiteFooter from './Footer/SiteFooter.vue';
 </script>
