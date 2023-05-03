@@ -6,7 +6,7 @@
                 <label class="input__title">
                     Kies de hoogste van het eigen risico
                 </label>
-                <select class="form-control">
+                <select v-model="selectedEigenrisico" class="form-control">
                     <option>€ 385 - verplicht eigen risico</option>
                     <option>€ 885 - korting van € 22 per jaar</option>
                 </select>
@@ -14,3 +14,15 @@
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useFormStore } from '../../../stores/formStore';
+
+const formStore = useFormStore();
+
+const selectedEigenrisico = computed({
+    get: () => formStore.eigenRisico,
+    set: value => (formStore.eigenRisico = value)
+});
+</script>

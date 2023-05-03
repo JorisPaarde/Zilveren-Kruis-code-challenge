@@ -11,7 +11,10 @@
                 <label class="input__title">
                     Kies uw aanvullende verzekering
                 </label>
-                <select class="form-control">
+                <select
+                    class="form-control"
+                    v-model="selectedAanvullendeVerzekering"
+                >
                     <option selected>
                         Geen aanvullende verzekering geselecteerd
                     </option>
@@ -24,3 +27,15 @@
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useFormStore } from '../../../stores/formStore';
+
+const formStore = useFormStore();
+
+const selectedAanvullendeVerzekering = computed({
+    get: () => formStore.aanvullendeVerzekering,
+    set: value => (formStore.aanvullendeVerzekering = value)
+});
+</script>

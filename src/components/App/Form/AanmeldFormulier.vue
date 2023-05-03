@@ -1,14 +1,14 @@
 <template>
     <h1>Aanmelden</h1>
     <h2>Gegevens</h2>
-    <AanvraagReden v-model="formData.aanvraagReden"/>
-    <PersoonlijkeGegevens v-model="formData.persoonlijkeGegevens"/>
+    <AanvraagReden v-model="formStore.aanvraagReden"/>
+    <PersoonlijkeGegevens v-model="formStore.persoonlijkeGegevens"/>
     <h2 class="mt-5">Verzekering</h2>
-    <Basisverzekering v-model="formData.basisverzekering"/>
-    <Betaaltermijn v-model="formData.betaaltermijn"/>
-    <EigenRisico v-model="formData.eigenRisico"/>
-    <AanvullendeVerzekering v-model="formData.aanvullendeVerzekering"/>
-    <Tandverzekering v-model="formData.tandverzekering"/>
+    <Basisverzekering v-model="formStore.basisverzekering"/>
+    <Betaaltermijn v-model="formStore.betaaltermijn"/>
+    <EigenRisico v-model="formStore.eigenRisico"/>
+    <AanvullendeVerzekering v-model="formStore.aanvullendeVerzekering"/>
+    <Tandverzekering v-model="formStore.tandverzekering"/>
 </template>
 <script setup lang="ts">
 import AanvraagReden from './Aanvraagreden.vue';
@@ -19,22 +19,8 @@ import EigenRisico from './EigenRisico.vue';
 import AanvullendeVerzekering from './AanvullendeVerzekering.vue';
 import Tandverzekering from './Tandverzekering.vue';
 
-import { reactive } from 'vue';
+import { useFormStore } from '../../../stores/formStore';
 
-const formData = reactive({
-    aanvraagReden: '',
-    persoonlijkeGegevens: {
-        naam: '',
-        tussenvoegsel: '',
-        achternaam: '',
-        geslacht: '',
-        geboortedatum: '',
-        burgerservicenummer: ''
-    },
-    basisverzekering: '',
-    betaaltermijn: '',
-    eigenRisico: '',
-    aanvullendeVerzekering: '',
-    tandverzekering: ''
-});
+const formStore = useFormStore();
+
 </script>

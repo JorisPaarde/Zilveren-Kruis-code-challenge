@@ -5,7 +5,7 @@
                 <label class="input__title">
                     Kies uw tandartsverzekering
                 </label>
-                <select class="form-control">
+                <select v-model="selectedTandverzekering" class="form-control">
                     <option selected>
                         Geen tandartsverzekering geselecteerd
                     </option>
@@ -17,3 +17,15 @@
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useFormStore } from '../../../stores/formStore';
+
+const formStore = useFormStore();
+
+const selectedTandverzekering = computed({
+    get: () => formStore.tandverzekering,
+    set: value => (formStore.tandverzekering = value)
+});
+</script>
