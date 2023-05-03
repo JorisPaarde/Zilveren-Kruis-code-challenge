@@ -41,6 +41,7 @@
                             class="radio__input custom-control-input"
                             type="radio"
                             name="geslacht"
+                            value="man"
                             v-model="selectedGeslacht"
                         />
                         <label
@@ -55,6 +56,7 @@
                             id="vrouw"
                             class="radio__input custom-control-input"
                             type="radio"
+                            value="vrouw"
                             name="geslacht"
                             v-model="selectedGeslacht"
                         />
@@ -73,7 +75,7 @@
                 <label class="input__title"> Geboortedatum </label>
                 <input
                     class="input__field form-control"
-                    type="text"
+                    type="date"
                     v-model="geboortedatum"
                 />
             </div>
@@ -83,7 +85,9 @@
                 <label class="input__title"> Burgerservicenummer </label>
                 <input
                     class="input__field form-control is-invalid"
-                    type="text"
+                    type="number"
+                    maxlength="9"
+                    oninput="this.value=this.value.slice(0,this.maxLength)"
                     v-model="burgerservicenummer"
                 />
             </div>
