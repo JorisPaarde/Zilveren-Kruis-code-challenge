@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 export const useFormStore = defineStore({
     id: 'formStore',
     state: () => ({
-        aanvraagReden: '',
+        aanvraagReden: 'overstappen',
         persoonlijkeGegevens: {
             naam: '',
             tussenvoegsel: '',
@@ -13,9 +13,9 @@ export const useFormStore = defineStore({
             burgerservicenummer: ''
         },
         basisverzekering: '',
-        betaaltermijn: '',
+        betaaltermijn: 'per jaar',
         eigenRisico: '',
         aanvullendeVerzekering: '',
-        tandverzekering: ''
+        tandverzekering: 'Geen tandartsverzekering geselecteerd'
     })
 });

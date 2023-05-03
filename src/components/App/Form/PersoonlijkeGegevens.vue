@@ -3,8 +3,11 @@
         <h3>Persoonlijke gegevens</h3>
         <div class="form-input my-4">
             <div class="input__group">
-                <label class="input__title">Naam</label>
+                <label for="persoonlijke-gegevens-naam" class="input__title"
+                    >Naam</label
+                >
                 <input
+                    id="persoonlijke-gegevens-naam"
                     class="input__field form-control"
                     type="text"
                     v-model="naam"
@@ -13,8 +16,14 @@
         </div>
         <div class="form-input my-4">
             <div class="input__group">
-                <label class="input__title"> Tussenvoegsels </label>
+                <label
+                    for="persoonlijke-gegevens-tussenvoegsel"
+                    class="input__title"
+                >
+                    Tussenvoegsels
+                </label>
                 <input
+                    id="persoonlijke-gegevens-tussenvoegsel"
                     class="input__field form-control"
                     type="text"
                     v-model="tussenvoegsel"
@@ -23,8 +32,13 @@
         </div>
         <div class="form-input my-4">
             <div class="input__group">
-                <label class="input__title">Achternaam</label>
+                <label
+                    for="persoonlijke-gegevens-achternaam"
+                    class="input__title"
+                    >Achternaam</label
+                >
                 <input
+                    id="persoonlijke-gegevens-achternaam"
                     class="input__field form-control"
                     type="text"
                     v-model="achternaam"
@@ -37,7 +51,7 @@
                 <div class="form-row">
                     <div class="radio custom-radio radio__option">
                         <input
-                            id="man"
+                            id="geslacht-man"
                             class="radio__input custom-control-input"
                             type="radio"
                             name="geslacht"
@@ -46,14 +60,14 @@
                         />
                         <label
                             class="radio__label custom-control-label"
-                            for="man"
+                            for="geslacht-man"
                         >
                             Man
                         </label>
                     </div>
                     <div class="radio custom-radio radio__option">
                         <input
-                            id="vrouw"
+                            id="geslacht-vrouw"
                             class="radio__input custom-control-input"
                             type="radio"
                             value="vrouw"
@@ -62,7 +76,7 @@
                         />
                         <label
                             class="radio__label custom-control-label"
-                            for="vrouw"
+                            for="geslacht-vrouw"
                         >
                             Vrouw
                         </label>
@@ -72,18 +86,25 @@
         </div>
         <div class="form-input my-4">
             <div class="input__group">
-                <label class="input__title"> Geboortedatum </label>
+                <label for="geboortedatum" class="input__title">
+                    Geboortedatum
+                </label>
                 <input
+                    id="geboortedatum"
                     class="input__field form-control"
                     type="date"
+                    :max="currentDate"
                     v-model="geboortedatum"
                 />
             </div>
         </div>
         <div class="form-input my-4">
             <div class="input__group">
-                <label class="input__title"> Burgerservicenummer </label>
+                <label for="burgerservicenummer" class="input__title">
+                    Burgerservicenummer
+                </label>
                 <input
+                    id="burgerservicenummer"
                     class="input__field form-control is-invalid"
                     type="number"
                     maxlength="9"
@@ -107,8 +128,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useFormStore } from '../../../stores/formStore';
+import { getCurrentDate } from '@/helpers/datehelpers';
 
 const formStore = useFormStore();
+const currentDate = getCurrentDate();
 
 const naam = computed({
     get: () => formStore.persoonlijkeGegevens.naam,

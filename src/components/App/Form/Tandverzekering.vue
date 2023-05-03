@@ -2,11 +2,11 @@
     <div class="form-group">
         <div class="form-input my-4">
             <div class="input__group">
-                <label class="input__title">
+                <label for="tand-verzekering-select" class="input__title">
                     Kies uw tandartsverzekering
                 </label>
-                <select v-model="selectedTandverzekering" class="form-control">
-                    <option selected>
+                <select id="tand-verzekering-select" v-model="selectedTandverzekering" class="form-control">
+                    <option value="" disabled>
                         Geen tandartsverzekering geselecteerd
                     </option>
                     <option>Tand 1 - € 80,28 per jaar</option>

@@ -8,14 +8,19 @@
         </p>
         <div class="form-input my-4">
             <div class="input__group">
-                <label class="input__title">
+                <label
+                    for="aanvullende-verzekering-select"
+                    class="input__title"
+                >
                     Kies uw aanvullende verzekering
                 </label>
                 <select
+                    id="aanvullende-verzekering-select"
                     class="form-control"
                     v-model="selectedAanvullendeVerzekering"
+                    aria-labelledby="aanvullende-verzekering-select">
                 >
-                    <option selected>
+                    <option value="">
                         Geen aanvullende verzekering geselecteerd
                     </option>
                     <option>Aanvullend 1 - € 21,38 per jaar</option>
