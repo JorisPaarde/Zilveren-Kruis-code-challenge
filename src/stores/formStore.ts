@@ -14,8 +14,8 @@ export const useFormStore = defineStore({
         },
         basisverzekering: '',
         betaaltermijn: 'per jaar',
-        eigenRisico: '',
-        aanvullendeVerzekering: '',
+        eigenRisico: '€ 385 - verplicht eigen risico',
+        aanvullendeVerzekering: 'Geen aanvullende verzekering geselecteerd',
         tandverzekering: 'Geen tandartsverzekering geselecteerd'
     })
 });
