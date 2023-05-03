@@ -20,9 +20,10 @@
                     v-model="selectedAanvullendeVerzekering"
                     aria-labelledby="aanvullende-verzekering-select">
                 >
-                    <option value="">
+                    <option disabled hidden>
                         Geen aanvullende verzekering geselecteerd
                     </option>
+                    <option value="Geen aanvullende verzekering geselecteerd">Geen aanvullende verzekering</option>
                     <option>Aanvullend 1 - € 21,38 per jaar</option>
                     <option>Aanvullend 2 - € 85,06 per jaar</option>
                     <option>Aanvullend 3 - € 198,63 per jaar</option>
