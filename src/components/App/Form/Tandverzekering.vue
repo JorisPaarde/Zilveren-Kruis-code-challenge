@@ -26,7 +26,7 @@ import { useFormStore } from '../../../stores/formStore';
 const formStore = useFormStore();
 
 const selectedTandverzekering = computed({
-    get: () => formStore.tandverzekering,
-    set: value => (formStore.tandverzekering = value)
+    get: () => formStore.tandVerzekering,
+    set: value => (formStore.tandVerzekering = value)
 });
 </script>

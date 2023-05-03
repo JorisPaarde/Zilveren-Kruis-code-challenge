@@ -1,5 +1,5 @@
 <template>
-    <div v-show="formStore.basisverzekering.length > 1" class="form-group">
+    <div v-show="formStore.basisVerzekering.length > 1" class="form-group">
         <h3>Eigen risico</h3>
         <div class="form-input my-4">
             <div class="input__group">

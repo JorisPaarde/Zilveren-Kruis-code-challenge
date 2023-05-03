@@ -4,11 +4,11 @@
     <AanvraagReden v-model="formStore.aanvraagReden"/>
     <PersoonlijkeGegevens v-model="formStore.persoonlijkeGegevens"/>
     <h2 class="mt-5">Verzekering</h2>
-    <Basisverzekering v-model="formStore.basisverzekering"/>
+    <Basisverzekering v-model="formStore.basisVerzekering"/>
     <Betaaltermijn v-model="formStore.betaaltermijn"/>
     <EigenRisico v-model="formStore.eigenRisico"/>
     <AanvullendeVerzekering v-model="formStore.aanvullendeVerzekering"/>
-    <Tandverzekering v-model="formStore.tandverzekering"/>
+    <Tandverzekering v-model="formStore.tandVerzekering"/>
 </template>
 <script setup lang="ts">
 import AanvraagReden from './Aanvraagreden.vue';

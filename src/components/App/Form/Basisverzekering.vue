@@ -80,7 +80,7 @@ import { useFormStore } from '../../../stores/formStore';
 const formStore = useFormStore();
 
 const selectedBasisverzekering = computed({
-    get: () => formStore.basisverzekering,
-    set: value => (formStore.basisverzekering = value)
+    get: () => formStore.basisVerzekering,
+    set: value => (formStore.basisVerzekering = value)
 });
 </script>
