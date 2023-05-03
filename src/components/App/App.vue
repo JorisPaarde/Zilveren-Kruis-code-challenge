@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-8">
                     <AanmeldFormulier />
-                    <Review/>
+                    <Controle/>
                 </div>
                 <div class="col-4">
                     <ContactCard/>
@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import SiteHeader from './Header/SiteHeader.vue';
 import AanmeldFormulier from './Form/AanmeldFormulier.vue';
-import Review from './Review/Review.vue';
+import Controle from './Controle/Controle.vue';
 import ContactCard from './Cards/ContactCard.vue'
 import SiteFooter from './Footer/SiteFooter.vue';
 </script>
