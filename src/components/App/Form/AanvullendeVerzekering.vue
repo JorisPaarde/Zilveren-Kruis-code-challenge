@@ -27,7 +27,7 @@
                       :selected="index === 0"
                     >
                       {{ option.naam }}
-                      <span v-if="option.prijs > 0"> - {{ option.prijs }}</span>
+                      <span v-if="option.prijs !== '€ 0,00'"> - {{ option.prijs }}</span>
                     </option>
                 </select>
             </div>
@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useFormStore } from '@/stores/formStore';
-import { AanvullendeVerzekeringOptions } from '@/types/form-types';
+import { AanvullendeVerzekeringOptions } from '../../../../types/form-types';
 
 
 const formStore = useFormStore();

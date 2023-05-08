@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
-import type { IAanvraag } from 'src/interfaces/interfaces';
-import { AanvullendeVerzekeringOptions } from '../types/form-types';
+import type { IAanvraag } from '@interfaces/interfaces';
+import { AanvullendeVerzekeringOptions } from '../../types/form-types';
 
 export const useFormStore = defineStore({
     id: 'formStore',
