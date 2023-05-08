@@ -20,14 +20,15 @@
                     v-model="selectedAanvullendeVerzekering"
                     aria-labelledby="aanvullende-verzekering-select">
                 >
-                    <option disabled hidden>
-                        Geen aanvullende verzekering geselecteerd
+                    <option
+                      v-for="(option, index) in AanvullendeVerzekeringOptions"
+                      :key="index"
+                      :value="option"
+                      :selected="index === 0"
+                    >
+                      {{ option.naam }}
+                      <span v-if="option.prijs > 0"> - {{ option.prijs }}</span>
                     </option>
-                    <option value="Geen aanvullende verzekering geselecteerd">Geen aanvullende verzekering</option>
-                    <option>Aanvullend 1 - € 21,38 per jaar</option>
-                    <option>Aanvullend 2 - € 85,06 per jaar</option>
-                    <option>Aanvullend 3 - € 198,63 per jaar</option>
-                    <option>Aanvullend 4 - € 359,73 per jaar</option>
                 </select>
             </div>
         </div>
@@ -36,12 +37,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useFormStore } from '../../../stores/formStore';
+import { useFormStore } from '@/stores/formStore';
+import { AanvullendeVerzekeringOptions } from '@/types/form-types';
+
 
 const formStore = useFormStore();
 
 const selectedAanvullendeVerzekering = computed({
-    get: () => formStore.aanvullendeVerzekering,
+    get: () => formStore.aanvullendeVerzekering || AanvullendeVerzekeringOptions[0].name,
     set: value => (formStore.aanvullendeVerzekering = value)
 });
 </script>
